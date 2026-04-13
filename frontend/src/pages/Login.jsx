@@ -61,7 +61,10 @@ const Login = () => {
           />
         </div>
         <div style={{ marginBottom: '1.5rem' }}>
-          <label className="input-label">Senha</label>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label className="input-label" style={{ marginBottom: 0 }}>Senha</label>
+            <Link to="/forgot-password" style={{ fontSize: '0.8rem', color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>Esqueceu a senha?</Link>
+          </div>
           <input
             type="password"
             className="form-input"
