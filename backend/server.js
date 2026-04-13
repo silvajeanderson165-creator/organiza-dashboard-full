@@ -24,6 +24,10 @@ app.get('/', (req, res) => {
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/tasks', require('./routes/tasks'));
 
+// Fallback caso a Vercel corte o /api da requisição (Route Prefix)
+app.use('/auth', require('./routes/auth'));
+app.use('/tasks', require('./routes/tasks'));
+
 const PORT = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV !== 'production') {
