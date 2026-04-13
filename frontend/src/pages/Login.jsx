@@ -61,10 +61,7 @@ const Login = () => {
           />
         </div>
         <div style={{ marginBottom: '1.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <label className="input-label" style={{ marginBottom: 0 }}>Senha</label>
-            <Link to="/forgot-password" style={{ fontSize: '0.8rem', color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>Esqueceu a senha?</Link>
-          </div>
+          <label className="input-label" style={{ marginBottom: '0.3rem', display: 'block' }}>Senha</label>
           <input
             type="password"
             className="form-input"
@@ -72,8 +69,11 @@ const Login = () => {
             value={formData.password}
             onChange={e => setFormData({ ...formData, password: e.target.value })}
             required
-            style={{ marginBottom: 0 }}
+            style={{ marginBottom: '0.5rem' }}
           />
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Link to="/forgot-password" style={{ fontSize: '0.8rem', color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>Esqueceu a senha?</Link>
+          </div>
         </div>
         <button
           type="submit"
