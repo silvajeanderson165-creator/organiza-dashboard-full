@@ -108,7 +108,8 @@ body::before {
 }
 
 [data-theme='dark'] body::before {
-  opacity: 0;
+  opacity: 0.15;
+  filter: saturate(1.2) contrast(1.2);
 }
 
 /* Transições suaves para troca de tema */

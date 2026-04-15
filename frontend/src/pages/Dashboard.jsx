@@ -120,13 +120,22 @@ const Dashboard = () => {
     }
   };
 
-  // Derived State
-  const totalTasks = tasks.length;
-  const doneTasks = tasks.filter(t => t.status === 'Concluída').length;
-  const progressTasks = tasks.filter(t => t.status === 'Em Progresso').length;
-  const pendingTasks = tasks.filter(t => t.status === 'Pendente').length;
+  // Normaliza o status das tarefas vindo do DB (remove emojis ou espaços ocultos)
+  const normalizedTasks = tasks.map(t => {
+    let raw = t.status || '';
+    let norm = raw;
+    if (raw.includes('Conclu')) norm = 'Concluída';
+    else if (raw.includes('Progresso')) norm = 'Em Progresso';
+    else if (raw.includes('Pendente')) norm = 'Pendente';
+    return { ...t, status: norm };
+  });
 
-  const filteredTasks = tasks.filter(t => {
+  const totalTasks = normalizedTasks.length;
+  const doneTasks = normalizedTasks.filter(t => t.status === 'Concluída').length;
+  const progressTasks = normalizedTasks.filter(t => t.status === 'Em Progresso').length;
+  const pendingTasks = normalizedTasks.filter(t => t.status === 'Pendente').length;
+
+  const filteredTasks = normalizedTasks.filter(t => {
     const matchSearch = t.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchStatus = filterStatus === 'Todos' || t.status === filterStatus;
     const matchPriority = filterPriority === 'Todas' || t.priority === filterPriority;
@@ -134,6 +143,7 @@ const Dashboard = () => {
   });
 
   const progressPercent = totalTasks === 0 ? 0 : Math.round((doneTasks / totalTasks) * 100);
+  const safeProgressPercent = isNaN(progressPercent) ? 0 : progressPercent;
 
   return (
     <div className="app-frame">
@@ -253,7 +263,7 @@ const Dashboard = () => {
             </div>
             <div className="title-actions">
               <div className="trend-badge" style={{ padding: '0.5rem 1rem', background: 'var(--primary)', color: 'white', fontSize: '1rem', borderRadius: 'var(--radius-pill)' }}>
-                Progresso: {progressPercent}%
+                Progresso: {safeProgressPercent}%
               </div>
             </div>
           </div>
@@ -375,7 +385,7 @@ const Dashboard = () => {
                 height: '150px',
                 borderRadius: '50%',
                 /* O gradiente agora usa o verde corporativo para feito, e um vermelho sutil mas elegante pro que falta */
-                background: `conic-gradient(#1E5A44 ${progressPercent}%, #EF4444 ${progressPercent}%)`,
+                background: `conic-gradient(#1E5A44 ${safeProgressPercent}%, #EF4444 ${safeProgressPercent}%)`,
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center'
@@ -390,7 +400,7 @@ const Dashboard = () => {
                   alignItems: 'center', 
                   justifyContent: 'center'
                 }}>
-                  <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-dark)', lineHeight: 1.1 }}>{progressPercent}%</span>
+                  <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-dark)', lineHeight: 1.1 }}>{safeProgressPercent}%</span>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>Concluídas</span>
                 </div>
               </div>
