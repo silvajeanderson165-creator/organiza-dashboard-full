@@ -33,9 +33,11 @@ const Dashboard = () => {
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    // Força repaint no mobile antes de atualizar o state
+    void document.documentElement.offsetHeight;
+    setTheme(newTheme);
   };
 
   // Aplica o tema salvo ao carregar a página

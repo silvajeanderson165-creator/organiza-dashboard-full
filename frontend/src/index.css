@@ -95,7 +95,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem; 
+  padding: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Transições suaves para troca de tema */
+.app-frame,
+.sidebar,
+.stat-card,
+.panel,
+.search-bar,
+.nav-menu,
+.modal-box,
+.toast {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Fix: background-attachment:fixed é bugado no iOS Safari */
@@ -569,6 +582,12 @@ body {
 
 /* Tablet & Smaller Desktop */
 @media (max-width: 1024px) {
+  body {
+    padding: 0;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
   .app-frame {
     flex-direction: column;
     height: auto;
