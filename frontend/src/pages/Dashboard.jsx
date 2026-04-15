@@ -38,6 +38,11 @@ const Dashboard = () => {
     localStorage.setItem('theme', newTheme);
   };
 
+  // Aplica o tema salvo ao carregar a página
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
   useEffect(() => {
     loadTasks();
   }, []);

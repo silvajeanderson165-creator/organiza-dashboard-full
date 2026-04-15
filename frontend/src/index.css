@@ -63,6 +63,15 @@
   --shadow-card: 0 8px 30px rgba(0,0,0,0.4);
 }
 
+/* Esconde imagens de fundo claras no tema escuro */
+[data-theme='dark'] body {
+  background-image: none;
+}
+
+[data-theme='dark'] .app-frame::before {
+  opacity: 0.08;
+}
+
 /* Base Reset */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -80,7 +89,6 @@ body {
   background-image: url('/app-bg.png'); /* Imagem Mesh Gradient profissional atrás de tudo */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -88,6 +96,19 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.5rem; 
+}
+
+/* Fix: background-attachment:fixed é bugado no iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+@supports not (-webkit-touch-callout: none) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 /* App Frame */
