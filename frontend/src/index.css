@@ -630,6 +630,12 @@ body {
 
 /* Mobile Devices */
 @media (max-width: 768px) {
+  /* Sidebar precisa de z-index maior para que a nav-menu fixa
+     fique ACIMA do main-wrapper e receba cliques corretamente */
+  .sidebar {
+    z-index: 200;
+  }
+
   .nav-menu {
     position: fixed;
     bottom: 0; left: 0; right: 0;
