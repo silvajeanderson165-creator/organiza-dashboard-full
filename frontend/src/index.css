@@ -509,6 +509,20 @@ body {
 .auth-wrapper h1 { color: var(--text-dark); font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.03em; }
 .auth-wrapper p { margin-bottom: 2rem; color: var(--text-muted); }
 
+/* Auth responsivo - Mobile */
+@media (max-width: 1024px) {
+  .auth-wrapper {
+    max-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+}
+
 /* ============================================
    OVERLAYS / MODALS / TOASTS (RESTORED)
    ============================================ */
