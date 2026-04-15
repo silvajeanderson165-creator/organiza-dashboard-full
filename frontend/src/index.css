@@ -63,10 +63,7 @@
   --shadow-card: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-/* Esconde imagens de fundo claras no tema escuro */
-[data-theme='dark'] body {
-  background-image: none;
-}
+/* A opacidade da imagem de fundo é tratada no pseudo-elemento body::before */
 
 [data-theme='dark'] .app-frame::before {
   opacity: 0.08;
@@ -86,9 +83,6 @@ html {
 body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-screen);
-  background-image: url('/app-bg.png'); /* Imagem Mesh Gradient profissional atrás de tudo */
-  background-size: cover;
-  background-position: center;
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -97,6 +91,24 @@ body {
   justify-content: center;
   padding: 1.5rem;
   transition: background-color 0.3s ease;
+}
+
+/* Pseudo-elemento para evitar o glitch do Safari (iOS) ao trocar background-image */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/app-bg.png'); /* Imagem Mesh Gradient profissional atrás de tudo */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme='dark'] body::before {
+  opacity: 0;
 }
 
 /* Transições suaves para troca de tema */
