@@ -33,14 +33,11 @@ const Dashboard = () => {
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    // Força repaint no mobile antes de atualizar o state
-    void document.documentElement.offsetHeight;
     setTheme(newTheme);
   };
 
-  // Aplica o tema salvo ao carregar a página
+  // Aplica o tema salvo ao carregar a página e quando altera
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
@@ -384,8 +381,8 @@ const Dashboard = () => {
                 width: '150px', 
                 height: '150px',
                 borderRadius: '50%',
-                /* O gradiente agora usa o verde corporativo para feito, e um vermelho sutil mas elegante pro que falta */
-                background: `conic-gradient(#1E5A44 ${safeProgressPercent}%, #EF4444 ${safeProgressPercent}%)`,
+                /* Gradiente reforçado para compatibilidade com Safari Mobile */
+                background: `conic-gradient(from 0deg, var(--primary) 0%, var(--primary) ${safeProgressPercent}%, var(--danger) ${safeProgressPercent}%, var(--danger) 100%)`,
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center'
@@ -393,7 +390,7 @@ const Dashboard = () => {
                 <div style={{
                   width: '120px', 
                   height: '120px',
-                  background: 'var(--bg-card)', /* Furo do doughnut acompanhando o fundo branco */
+                  background: 'var(--bg-card)', 
                   borderRadius: '50%',
                   display: 'flex', 
                   flexDirection: 'column', 
@@ -407,11 +404,11 @@ const Dashboard = () => {
 
               <div style={{ display: 'flex', gap: '1.25rem', marginTop: '2rem', width: '100%', justifyContent: 'center' }}>
                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#1E5A44' }}></div>
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--primary)' }}></div>
                     <span style={{ color: 'var(--text-dark)', fontSize: '0.85rem', fontWeight: 700 }}>FEITAS ({doneTasks})</span>
                  </div>
                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#EF4444' }}></div>
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--danger)' }}></div>
                     <span style={{ color: 'var(--text-dark)', fontSize: '0.85rem', fontWeight: 700 }}>A FAZER ({totalTasks - doneTasks})</span>
                  </div>
               </div>
