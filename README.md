@@ -1,57 +1,81 @@
-# ORGANIZA - Task Manager Workspace 🚀
+# 🚀 ORGANIZA — Task Manager Workspace
 
-<div align="center">
-  <h3>Uma aplicação Full Stack completa desenvolvida do zero para gestão inteligente e ranqueamento de tarefas diárias.</h3>
-  <img src="https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge" />
-</div>
+> Aplicação **Full Stack** completa (MERN) para gestão inteligente de tarefas com autenticação JWT, dashboard interativo e deploy Serverless — do banco de dados ao pixel.
 
-<br />
+[![Acessar App](https://img.shields.io/badge/🌐_ACESSAR_APP-organiza.vercel.app-7C3AED?style=for-the-badge)](https://organiza-dashboard-full.vercel.app)
+![Status](https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+
+---
 
 ## 💻 Sobre o Projeto
 
-O **ORGANIZA** é mais do que uma lista de tarefas, é uma prova de arquitetura modular focada em Clean UI/UX e desenvolvimento moderno Full-Stack (MERN). Criado para oferecer uma experiência de usuário responsiva, este projeto emprega design premium baseando-se em conceitos como *Glassmorphism*, *Dark/Light Mode* instantâneo e layout intuitivo, tudo apoiado por um ecossistema sólido no backend capaz de orquestrar milhares de requisições.
+O **ORGANIZA** é mais do que uma lista de tarefas — é uma prova de arquitetura modular focada em **Clean UI/UX** e desenvolvimento moderno **Full-Stack (MERN)**. Criado para oferecer uma experiência de usuário premium, o projeto emprega design com *Glassmorphism*, *Dark/Light Mode* instantâneo e layout intuitivo, apoiado por um backend sólido capaz de orquestrar autenticação segura e operações CRUD completas.
 
-A concepção da aplicação foi pensada do princípio ao fim para demonstrar maturidade desde a escrita de *schemas* no banco de dados até a finalização do *Deploy* Serverless num pipeline na Vercel.
+### ✨ Features
 
----
-
-## 🛠️ Stack Tecnológico (O que movimenta esse projeto)
-
-### 📌 Frontend / User Interface
-Desenvolvido em cima de reatividade pura trazendo experiências de zero reload para o usuário final:
-- **React v19**: Motor que lidera a renderização de componentes com a mais nova interface da tecnologia.
-- **Vite.js v8**: Dev Server substituto do Webpack, o qual proveu uma montagem da aplicação ultra-rápida.
-- **React Router DOM**: Orquestração impecável de Single Page Application (SPA), entregando fluidez de abas.
-- **Axios**: Agente de interceptação e consumo enxuto da API.
-- **Vanilla CSS3 Custom Design**: Estilização altamente rigorosa construída nativamente do zero (sem Tailwind/Bootstrap) com o intuito de mostrar extrema perícia e domínio em engenharia visual (CSS Gradients, Shadow DOMs e variáveis).
-- **Context API**: Propagação de estado global nativo (especialmente Autenticação).
-- **Lucide React**: Biblioteca vetorial SVG minimalista e moderna.
-
-### 📌 Backend / API e Regra de Negócios
-Totalmente assíncrono e pautado pelo protocolo REST:
-- **Node.js + Express.js v5**: Base da API, contendo roteamento otimizado, Middlewares e divisão em MVC (Model-View-Controller).
-- **MongoDB Atlas + Mongoose**: Banco de dados Não-Relacional (SaaS Cloud) com modelagem orientada a esquemas e validação estrita.
-- **Autenticação Segura JWT (JSON Web Tokens)**: Criação de sessões stateless para que cada requisição em endpoints sensíveis passe pelo Middleware e se revalide individualmente.
-- **Bcrypt**: Responsável pela Hasherização matemática das credenciais garantindo total isolamento de vazamento de dados primários da base de usuários.
-- **DotEnv + Cors**: Padronização de acesso seguro entre Frontend-Backend, bem como sigilo de keys privadas.
-
-### 📌 Arquitetura & Cloud
-- **Vercel Serverless Platform**: Execução avançada lidando simultâneamente com a hospedagem via roteador *monorepo multi-services*.
+- 🔐 **Autenticação Segura** — JWT + Bcrypt com sessões stateless e middleware de proteção
+- 🌓 **Dark / Light Mode** — Alternância instantânea com persistência de preferência
+- 📊 **Dashboard Interativo** — Gráficos de progresso, estatísticas e ranqueamento de tarefas
+- 📧 **Reset de Senha** — Fluxo completo com envio de e-mail via Nodemailer
+- 🎨 **CSS Artesanal** — Design premium construído nativamente do zero (sem frameworks CSS)
+- 📱 **Responsivo** — Layout adaptável para todas as telas
+- 🔔 **Toasts & Feedbacks** — Mensagens de erro/sucesso precisas em tempo real
 
 ---
 
-## 🎯 Por que recrutar este autor baseando-se no código?
+## 🛠️ Stack Tecnológico
 
-1. **Domínio de Fluxos Completos (E2E)**
-   - Este projeto não utiliza "gambiarras" ou lógicas unicamente front-end. Há a completa e clara divisão entre o que é Interface e o que é Dado. O Banco de Dados é manipulado de forma higiênica.
-2. **Capacidade com Seguranças Primárias**
-   - Senhas passam por Salts aleatórios do Node. Interceptadores bloqueiam APIs abertas para usuários deslogados. O autor comprova que sabe a diferença entre segurança local vs. segurança de servidor.
-3. **Senso Crítico Produtivo e Design System**
-   - Como evidenciado na camada visual, existe a preocupação além do simples "funcionar". A plataforma não apenas valida credenciais; ela entrega mensagens de erro precisas (Toasts), bloqueios dinâmicos via botões enquanto a conexão (Loadings) atua, evidenciando mentalidade de desenvolvimento centrada no usuário final.
+### 📌 Frontend
+| Tech | Uso |
+|---|---|
+| **React v19** | Motor de renderização com componentes reativos |
+| **Vite.js v8** | Dev Server ultra-rápido substituto do Webpack |
+| **React Router DOM** | SPA com navegação fluida entre páginas |
+| **Axios** | Consumo enxuto da API REST |
+| **CSS3 Custom** | Glassmorphism, gradientes e variáveis CSS (zero frameworks) |
+| **Context API** | Estado global nativo para autenticação |
+| **Lucide React** | Ícones vetoriais SVG modernos |
+
+### 📌 Backend
+| Tech | Uso |
+|---|---|
+| **Node.js + Express v5** | API REST com roteamento MVC otimizado |
+| **MongoDB Atlas + Mongoose** | Banco NoSQL Cloud com validação estrita |
+| **JWT** | Sessões stateless com revalidação por middleware |
+| **Bcrypt** | Hash seguro de credenciais com salt aleatório |
+| **Nodemailer** | Envio de e-mail para fluxo de recuperação de senha |
+
+### 📌 Deploy
+| Tech | Uso |
+|---|---|
+| **Vercel Serverless** | Hospedagem monorepo multi-services |
 
 ---
 
-<br/>
-<div align="center">
-  Feito com dedicação 🧩 e muita lógica!
-</div>
+## 🚀 Como Rodar
+
+```bash
+git clone https://github.com/silvajeanderson165-creator/organiza-dashboard-full.git
+cd organiza-dashboard-full
+
+# Backend
+cd backend && npm install && npm start
+
+# Frontend (em outro terminal)
+cd frontend && npm install && npm run dev
+```
+
+---
+
+## 🎯 Por Que Este Projeto Se Destaca
+
+1. **Domínio E2E** — Divisão clara entre Interface e Dados, sem "gambiarras" front-end
+2. **Segurança Real** — Salts, interceptadores de API e proteção de rotas sensíveis
+3. **Design System** — Toasts, loadings, bloqueios dinâmicos e UX centrada no usuário
+
+---
+
+Feito com dedicação 🧩 e muita lógica por **Jeanderson Silva**
