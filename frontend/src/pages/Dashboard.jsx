@@ -160,6 +160,16 @@ const Dashboard = () => {
       </div>
 
       <div className="app-frame">
+        {/* TEXTURE OVERLAY PARA APP-FRAME RENDERIZADO NO REACT */}
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: "url('/bg-pattern.png')",
+          backgroundSize: 'cover', backgroundPosition: 'center',
+          opacity: theme === 'dark' ? 0.08 : 0.25,
+          pointerEvents: 'none', zIndex: 0,
+          transition: 'opacity 0.3s ease'
+        }} />
+
       {/* Toast */}
       {toast && (
         <div className={`toast-container animate-slide-up`}>

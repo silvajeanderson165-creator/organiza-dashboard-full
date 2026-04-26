@@ -87,11 +87,7 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* A opacidade da imagem de fundo é tratada no pseudo-elemento body::before */
-
-[data-theme='dark'] .app-frame::before {
-  opacity: 0.08;
-}
+/* Removido o pseudo-elemento da app-frame para evitar bug no Safari */
 
 /* Base Reset */
 *, *::before, *::after {
@@ -154,18 +150,7 @@ body {
   position: relative;
 }
 
-/* Background image overlay sutil por GENTILEZA manter a textura dentro do app */
-.app-frame::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('/bg-pattern.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.25; 
-  pointer-events: none;
-  z-index: 0;
-}
+/* Background image overlay movido para o React para bypassar bug de repaint do Safari */
 
 .sidebar, .main-wrapper {
   position: relative;
