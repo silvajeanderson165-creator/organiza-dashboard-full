@@ -202,8 +202,8 @@ const Dashboard = () => {
 
           <div className="nav-group">
             <span className="nav-title">PREFERÊNCIAS</span>
-            <button className="nav-item" onClick={toggleTheme}>
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />} Tema {theme === 'dark' ? 'Claro' : 'Escuro'}
+            <button className="nav-item nav-theme-btn" onClick={toggleTheme}>
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />} <span>Tema</span>
             </button>
             <button className="nav-item text-danger" onClick={logout}>
               <LogOut size={18} /> Sair

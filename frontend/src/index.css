@@ -789,3 +789,9 @@ body::before {
   /* Give space at bottom for mobile nav bar */
   .main-wrapper { padding-bottom: 80px; }
 }
+
+/* Fix Safari: botão de tema com largura fixa para evitar relayout ao trocar texto */
+.nav-theme-btn {
+  min-width: 90px;
+  justify-content: center;
+}
