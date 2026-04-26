@@ -468,10 +468,7 @@ const Dashboard = () => {
                           </span>
                         )}
                         
-                        <span className={`status-badge priority-${t.priority.toLowerCase()}`} style={{ 
-                          background: t.priority==='Alta'?'#fee2e2':t.priority==='Média'?'#fef3c7':'#e0f2fe',
-                          color: t.priority==='Alta'?'#991b1b':t.priority==='Média'?'#b45309':'#0284c7'
-                        }}>
+                        <span className={`status-badge priority-${t.priority.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()}`}>
                           {t.priority}
                         </span>
                       </div>
@@ -479,7 +476,7 @@ const Dashboard = () => {
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                       <select 
-                        className={`status-select status-${t.status.replace(' ', '')}`}
+                        className={`status-select status-${t.status.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '').toLowerCase()}`}
                         value={t.status}
                         onChange={(e) => updateStatus(t._id, e.target.value)}
                         style={{
@@ -488,8 +485,6 @@ const Dashboard = () => {
                           border: '1px solid var(--border-light)',
                           fontSize: '0.8rem',
                           fontWeight: 600,
-                          background: t.status==='Concluída'?'#dcfce7': t.status==='Em Progresso'?'#fef3c7':'#fee2e2',
-                          color: t.status==='Concluída'?'#166534': t.status==='Em Progresso'?'#b45309':'#991b1b',
                           outline: 'none', cursor: 'pointer'
                         }}
                       >
