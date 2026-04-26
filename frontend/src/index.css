@@ -131,7 +131,7 @@ body::before {
   transition: opacity 0.3s ease;
 }
 
-[data-theme='dark'] body::before {
+body[data-theme='dark']::before {
   opacity: 0.1; /* Subtly allow the background pattern to show */
   filter: saturate(1.2) contrast(1.2);
 }

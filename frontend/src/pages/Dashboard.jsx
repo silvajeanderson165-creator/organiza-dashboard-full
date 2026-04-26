@@ -40,6 +40,7 @@ const Dashboard = () => {
   // Aplica o tema salvo ao carregar a página e quando altera
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme); // Fix Safari iOS repaint bug
   }, [theme]);
 
   useEffect(() => {
@@ -377,7 +378,9 @@ const Dashboard = () => {
             }}>
               <h3 style={{ width: '100%', color: 'var(--text-dark)', fontSize: '1.05rem', fontWeight: 600, marginBottom: '1.5rem' }}>Resumo de Progresso</h3>
               
-              <div style={{
+              <div 
+                key={`pie-${theme}-${safeProgressPercent}-${totalTasks}`}
+                style={{
                 width: '150px', 
                 height: '150px',
                 borderRadius: '50%',
