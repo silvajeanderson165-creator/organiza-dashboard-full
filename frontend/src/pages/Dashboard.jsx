@@ -144,7 +144,22 @@ const Dashboard = () => {
   const safeProgressPercent = isNaN(progressPercent) ? 0 : progressPercent;
 
   return (
-    <div className="app-frame">
+    <>
+      {/* BULLETPROOF BACKGROUND LAYER FOR SAFARI iOS */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+        backgroundColor: 'var(--bg-screen)', zIndex: -2, transition: 'background-color 0.3s ease'
+      }}>
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: "url('/app-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center',
+          opacity: theme === 'dark' ? 0.1 : 1,
+          filter: theme === 'dark' ? 'saturate(1.2) contrast(1.2)' : 'none',
+          transition: 'opacity 0.3s ease, filter 0.3s ease'
+        }} />
+      </div>
+
+      <div className="app-frame">
       {/* Toast */}
       {toast && (
         <div className={`toast-container animate-slide-up`}>
@@ -507,7 +522,8 @@ const Dashboard = () => {
           </div>
         </main>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

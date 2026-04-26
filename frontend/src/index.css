@@ -106,7 +106,7 @@ html {
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-color: var(--bg-screen);
+  background-color: transparent; /* Renderizado via React para evitar bug no Safari */
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -114,26 +114,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-/* Pseudo-elemento para evitar o glitch do Safari (iOS) ao trocar background-image */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('/app-bg.png'); /* Imagem Mesh Gradient profissional atrás de tudo */
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-body[data-theme='dark']::before {
-  opacity: 0.1; /* Subtly allow the background pattern to show */
-  filter: saturate(1.2) contrast(1.2);
 }
 
 /* Transições suaves para troca de tema */
