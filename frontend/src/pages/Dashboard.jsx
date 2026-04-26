@@ -38,9 +38,16 @@ const Dashboard = () => {
   };
 
   // Aplica o tema salvo ao carregar a página e quando altera
+  // Fix Safari iOS: forçar repaint completo ao trocar tema
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    document.body.setAttribute('data-theme', theme); // Fix Safari iOS repaint bug
+    document.body.setAttribute('data-theme', theme);
+    // Forçar repaint no Safari mobile: desligar e religar a visibilidade
+    // Isso invalida a camada compositing da GPU e previne tela preta/verde
+    document.body.style.display = 'none';
+    // eslint-disable-next-line no-unused-expressions
+    document.body.offsetHeight; // trigger reflow
+    document.body.style.display = '';
   }, [theme]);
 
   useEffect(() => {
@@ -145,30 +152,11 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* BULLETPROOF BACKGROUND LAYER FOR SAFARI iOS */}
-      <div style={{
-        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-        backgroundColor: 'var(--bg-screen)', zIndex: -2, transition: 'background-color 0.3s ease'
-      }}>
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: "url('/app-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center',
-          opacity: theme === 'dark' ? 0.1 : 1,
-          filter: theme === 'dark' ? 'saturate(1.2) contrast(1.2)' : 'none',
-          transition: 'opacity 0.3s ease, filter 0.3s ease'
-        }} />
-      </div>
+      {/* Background gerenciado via CSS no body e .app-frame — SEM camada position:fixed */}
 
       <div className="app-frame">
-        {/* TEXTURE OVERLAY PARA APP-FRAME RENDERIZADO NO REACT */}
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: "url('/bg-pattern.png')",
-          backgroundSize: 'cover', backgroundPosition: 'center',
-          opacity: theme === 'dark' ? 0.08 : 0.25,
-          pointerEvents: 'none', zIndex: 0,
-          transition: 'opacity 0.3s ease'
-        }} />
+        {/* TEXTURE OVERLAY — usa classe CSS ao invés de inline style para estabilidade */}
+        <div className={`app-texture-overlay ${theme === 'dark' ? 'app-texture-dark' : ''}`} />
 
       {/* Toast */}
       {toast && (

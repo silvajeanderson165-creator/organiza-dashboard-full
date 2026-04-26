@@ -102,7 +102,7 @@ html {
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-color: transparent; /* Renderizado via React para evitar bug no Safari */
+  background-color: var(--bg-screen); /* Cor sólida no body previne artefatos de GPU no Safari */
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -138,9 +138,47 @@ body {
   display: flex;
   overflow: hidden; 
   position: relative;
+  /* Fix Safari mobile: forçar camada compositing estável */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Background image overlay movido para o React para bypassar bug de repaint do Safari */
+
+/* Texture overlay — classes CSS estáveis (sem inline styles dinâmicos) */
+.app-texture-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/bg-pattern.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-texture-overlay.app-texture-dark {
+  opacity: 0.08;
+}
+
+/* Background image no body para tema claro */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/app-bg.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-theme='dark'] body::before {
+  opacity: 0.1;
+  filter: saturate(1.2) contrast(1.2);
+}
 
 .sidebar, .main-wrapper {
   position: relative;
