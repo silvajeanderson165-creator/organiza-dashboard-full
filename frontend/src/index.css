@@ -112,17 +112,7 @@ body {
   padding: 0.5rem;
 }
 
-/* Transições suaves para troca de tema */
-.app-frame,
-.sidebar,
-.stat-card,
-.panel,
-.search-bar,
-.nav-menu,
-.modal-box,
-.toast {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
+/* Transições removidas: animar background-color em elementos grandes com overflow:hidden e border-radius causa travamento na GPU do Safari (tela verde/preta). A troca de tema será instantânea e 100% estável. */
 
 /* Fix: background-attachment:fixed é bugado no iOS Safari */
 @supports (-webkit-touch-callout: none) {
