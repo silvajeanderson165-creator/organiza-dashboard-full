@@ -58,7 +58,7 @@ O **ORGANIZA** é mais do que uma lista de tarefas — é uma prova de arquitetu
 ## 🚀 Como Rodar
 
 ```bash
-git clone https://github.com/silvajeanderson165-creator/organiza-dashboard-full.git
+git clone https://github.com/jeanderson-silva8/organiza-dashboard-full.git
 cd organiza-dashboard-full
 
 # Backend
